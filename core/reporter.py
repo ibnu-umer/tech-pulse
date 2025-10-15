@@ -1,10 +1,12 @@
 import json
+import logging
 from pathlib import Path
 
 
 
 
 OUTPUT_FILE = Path("output/report.json")
+logger = logging.getLogger(__name__)
 
 def generate_report(processed_data):
     """
@@ -12,11 +14,9 @@ def generate_report(processed_data):
     """
     if not processed_data:
         print("[reporter] No data to report.")
+        logger.info("Failed [reproter] No data to report.")
         return
 
-    # Ensure output folder exists
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    
     # Console summary
     print("\n=== 🧠 TechPulse Report Summary ===\n")
     for topic, items in processed_data.items():
@@ -30,3 +30,4 @@ def generate_report(processed_data):
         json.dump(processed_data, f, indent=2, ensure_ascii=False)
 
     print(f"[reporter] JSON report saved → {OUTPUT_FILE.resolve()}")
+    logger.info(f"Success [reporter] JSON report saved → {OUTPUT_FILE.resolve()}")

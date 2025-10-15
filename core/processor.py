@@ -1,8 +1,10 @@
 from collections import defaultdict
 from datetime import datetime, timezone
+import logging
 
 
 
+logger = logging.getLogger(__name__)
 
 def process_data(raw_data):
     """
@@ -53,6 +55,7 @@ def process_data(raw_data):
         grouped[topic] = sorted(grouped[topic], key=lambda x: x["popularity"], reverse=True)
 
     print(f"[processor] Processed data for {len(grouped)} topics.")
+    logger.info(f"[processor] Processed data for {len(grouped)} topics.")
     return dict(grouped)
 
 
