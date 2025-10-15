@@ -13,6 +13,7 @@ async def fetch_all(topics, limit=None):
             tasks += [
                 fetch_news(session, topic, limit),
                 fetch_github(session, topic, limit),
+                fetch_reddit(session, topic, limit)
             ]
         results = await asyncio.gather(*tasks, return_exceptions=True)
         return results
