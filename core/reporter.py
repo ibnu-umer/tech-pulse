@@ -16,7 +16,7 @@ def generate_report(processed_data):
 
     # Ensure output folder exists
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-
+    
     # Console summary
     print("\n=== 🧠 TechPulse Report Summary ===\n")
     for topic, items in processed_data.items():

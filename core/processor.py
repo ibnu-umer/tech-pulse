@@ -18,10 +18,10 @@ def process_data(raw_data):
     for topic_data in raw_data:
         source = topic_data.get("source", "unknown")
         results = topic_data.get("results", [])
+        topic = topic_data.get("topic", "unknown")
 
         for result in results:
             popularity = result.get("popularity", None)
-            topic = topic_data.get("topic", "unknown")
 
             if popularity is None:
                 if source == "news":
@@ -42,7 +42,7 @@ def process_data(raw_data):
 
 
             grouped[topic].append({
-                "source": result.get("source", "unknown"),
+                "source": source,
                 "title": result.get("title", "").strip(),
                 "description": result.get("description", "").strip(),
                 "popularity": popularity
