@@ -18,7 +18,7 @@ You give it a few topics, it gives you a **real-time tech pulse report**.
 python main.py --topics "AI, Python, Tesla" --limit 5
 ```
 
-## 🚀 Example Output
+### Output
 **📊 TechPulse Report**
 
 🔹 AI
@@ -64,7 +64,7 @@ techpulse/
 │   ├── reddit_api.py
 │   └── github_api.py
 └── output/
-    └── techpulse_report.json
+    └── report.json
 ```
 
 
@@ -97,7 +97,7 @@ python main.py --topics "AI, Tesla"
 
 ## 📦 Output
 - Console summary (pretty printed)
-- JSON report at /output/techpulse_report.json
+- JSON report at /output/report.json
 
 
 ## 🧭 Roadmap

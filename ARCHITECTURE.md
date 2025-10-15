@@ -31,7 +31,7 @@ It follows a **modular and extensible architecture**, separating responsibilitie
                 │
                 ▼
 ┌───────────────────────────────┐
-│    core/processor.py          │
+│      core/processor.py        │
 │    - Normalizes API data      │
 │    - Merges by topic          │
 │    - Cleans structures        │
@@ -39,7 +39,7 @@ It follows a **modular and extensible architecture**, separating responsibilitie
                 │
                 ▼
 ┌───────────────────────────────┐
-│     core/reporter.py          │
+│      core/reporter.py         │
 │     - Formats output          |
 │     - Saves JSON report       │
 │     - Pretty prints CLI       │
@@ -66,7 +66,7 @@ techpulse/
 │   ├── reddit_api.py     # Reddit public API integration
 │   └── github_api.py     # GitHub trending repo fetcher
 └── output/
-    └── techpulse_report.json
+    └── report.json       # Final result
 ```
 
 
@@ -95,11 +95,13 @@ techpulse/
 - Normalizes all API outputs into a unified data structure:
 
 ```python
+# Example
   {
     "source": "news",
     "topic": "AI",
     "title": "OpenAI launches GPT-6",
     "url": "https://newsapi.org/...",
+    "description": ""
     "popularity": 2300
   }
 ```
@@ -110,7 +112,7 @@ techpulse/
 ### **4. `core/reporter.py`**
 - Formats the processed data into:
 - Readable console output
-- Persistent JSON report (/output/techpulse_report.json)
+- Persistent JSON report (/output/report.json)
 - Responsible for all presentation logic.
 
 ### **5. `apis/`**
@@ -121,7 +123,7 @@ techpulse/
 
 **Each module follows a standard async pattern:**
 ```python
-async def fetch_<source>(session, topic) -> dict:
+async def fetch_<source>(session, topic, limit) -> dict:
     ...
     return normalized_data
 ```
