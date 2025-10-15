@@ -1,7 +1,7 @@
 import asyncio
 import argparse
 from dotenv import load_dotenv
-import os
+import os, traceback
 from core.fetcher import fetch_all
 from core.processor import process_data
 from core.reporter import generate_report
@@ -26,11 +26,11 @@ async def main():
     # Fetch data
     try:
         raw_data = await fetch_all(topics, limit=limit)
-        print(raw_data)
         processed = process_data(raw_data)
         generate_report(processed)
     except Exception as err:
         print(f"Error while fetching data: {err}")
+        traceback.print_exc()
 
 
 
